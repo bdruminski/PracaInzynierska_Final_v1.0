@@ -20,6 +20,7 @@ Adafruit_SGP30 sgp;
 WiFiClient client;
 Adafruit_BME280 bme;
 
+
 float PM25 = 0;
 float PM10 = 0;
 float temperatura = 0;
@@ -92,6 +93,7 @@ float PomiarWilgnotnosci()
 {
   wilgotnosc = bme.readHumidity();
 } 
+
 
 float PomiarCisnienia()
 {
@@ -198,7 +200,7 @@ void setup()
   digitalWrite(Tranzystor_SGP30, LOW);                                         //Wylaczenie sensora SGP30 poprzez tranzystor sterujacy
   WysylanieDanych(Temperatura, Wilgotnosc, Cisnienie, PM25, PM10, eCO2, tVOC); //Wyslanie danych do ThingSpeak
 
-  sds.sleep(); //Usypianie ukladu ESP32
+  sds.sleep(); //Usypianie ukladu SDS011
   ++LiczbaUruchomien;
   Serial.println("Uruchomienie numer: " + String(LiczbaUruchomien));
   PowodRestartu();
